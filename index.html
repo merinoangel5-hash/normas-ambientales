@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Normas Ambientales Perú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: sereno y técnico, como el boletín que un consultor revisa con el café.
+   IDEA: la página de Normas Legales de El Peruano, recortada y anotada a mano.
+   PICTURE: la lista misma; arriba, un recuadro de "consultas abiertas" con su cuenta regresiva.
+   COLOUR and TYPE: papel blanco, tinta, verde bosque para lo vigente, bermellón para plazos; Newsreader + Public Sans.
+   LAYOUT: cabecera de periódico, franja de cifras, filtros fijos, tarjetas en una columna; detalle en hoja deslizante. */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#0f1513);--paper:light-dark(#f6f7f5,#17201d);--ink:light-dark(#121816,#e9eeeb);
+--mute:light-dark(#5b6762,#9aa8a2);--line:light-dark(#dfe4e1,#2a3531);
+--green:light-dark(#1d6b48,#5fc795);--greenbg:light-dark(#e6f2ec,#16302a);
+--red:light-dark(#c2361b,#ff8a6e);--redbg:light-dark(#fcebe6,#3a1d16);--amber:light-dark(#8a5a00,#f0c060);--amberbg:light-dark(#fbf1dc,#33290f)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Public Sans",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;margin:0;line-height:1.1;text-wrap:balance}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding:0 max(4vw,16px)}
+header{border-bottom:3px double var(--ink);padding:22px 0 14px}
+.mast{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:8px 20px}
+h1{font-size:clamp(30px,5vw,46px)}
+.sub{color:var(--mute);font-size:14px;margin-top:6px}
+.upd{font-size:14px;color:var(--mute);margin-top:8px}
+.upd b{color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.stat{padding:14px 12px 12px;border-right:1px solid var(--line);background:none;border-top:0;border-bottom:0;border-left:0;text-align:left;cursor:pointer;min-height:44px}
+.stat:last-child{border-right:0}
+.stat strong{display:block;font:700 clamp(26px,4vw,36px)/1 Newsreader,serif}
+.stat span{font-size:13px;color:var(--mute)}
+.stat.c strong{color:var(--red)}.stat.a strong{color:var(--green)}
+.open{margin:18px 0 4px;background:var(--redbg);border-radius:10px;padding:14px 16px}
+.open h2{font-size:21px;margin-bottom:8px}
+.open ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.open li button{all:unset;cursor:pointer;display:flex;gap:12px;align-items:baseline;width:100%;padding:4px 0}
+.open li button:focus-visible{outline:3px solid var(--red)}
+.days{flex:none;font-weight:700;color:var(--red);font-size:14px;min-width:78px;white-space:nowrap}
+.open li span:last-child{font-size:15px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0 10px;border-bottom:1px solid var(--line)}
+.search{width:100%;height:46px;border:1px solid var(--line);border-radius:10px;padding:0 14px;font-size:16px;background:var(--paper)}
+.chips{display:flex;gap:8px;overflow-x:auto;margin-top:10px;padding-bottom:2px}
+.chip{flex:none;height:38px;padding:0 14px;border-radius:19px;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-size:14px;white-space:nowrap}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.row2{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.row2 select{height:38px;border-radius:8px;border:1px solid var(--line);background:var(--bg);padding:0 10px;font-size:14px}
+.count{font-size:13px;color:var(--mute);align-self:center;margin-left:auto}
+main{padding-bottom:60px}
+.day{font:600 13px/1 "Public Sans";color:var(--mute);margin:22px 0 8px;text-transform:none}
+.card{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px;cursor:pointer}
+.card:hover{background:var(--paper)}
+.card.read{opacity:.62}
+.meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--mute)}
+.ent{font-weight:700;color:var(--ink);letter-spacing:.01em}
+.tag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;white-space:nowrap}
+.t-alta{background:var(--redbg);color:var(--red)}.t-media{background:var(--amberbg);color:var(--amber)}.t-baja{background:var(--paper);color:var(--mute)}
+.t-consulta{background:var(--redbg);color:var(--red)}.t-vigente{background:var(--greenbg);color:var(--green)}
+.card h3{font-size:19px;margin:6px 0 4px;font-weight:600}
+.num{font-size:13px;color:var(--mute)}
+.empty{padding:40px 0;color:var(--mute);text-align:center}
+.sheet{position:fixed;inset:0;z-index:20;display:none}
+.sheet.on{display:block}
+.shade{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.panel{position:absolute;right:0;top:0;bottom:0;width:min(560px,100%);background:var(--bg);overflow-y:auto;padding:22px 22px 40px;box-shadow:-8px 0 30px rgba(0,0,0,.2)}
+.close{float:right;width:44px;height:44px;border-radius:22px;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-size:22px;line-height:1}
+.panel h2{font-size:clamp(24px,4vw,30px);margin:10px 0 6px}
+.panel .resumen{font-size:17px;margin:16px 0;padding:14px 16px;background:var(--paper);border-radius:10px}
+.panel dl{display:grid;grid-template-columns:8em minmax(0,1fr);gap:6px 12px;font-size:15px;margin:16px 0}
+.panel dt{color:var(--mute)}.panel dd{margin:0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:10px;font-weight:600;text-decoration:none;border:1px solid var(--ink);color:var(--ink);background:var(--bg);cursor:pointer}
+.btn.pri{background:var(--green);border-color:var(--green);color:#fff}
+.plazo{margin-top:12px;padding:10px 14px;border-radius:10px;background:var(--redbg);color:var(--red);font-weight:600;font-size:15px}
+.note{font-size:13px;color:var(--mute);margin-top:22px}
+footer{border-top:1px solid var(--line);padding:18px 0 40px;font-size:13px;color:var(--mute)}
+@media(max-width:600px){.stat{padding:12px 8px}.panel{padding:16px 16px 40px}.panel dl{grid-template-columns:6.5em minmax(0,1fr)}.count{width:100%;margin:0}}
+@media(prefers-reduced-motion:no-preference){.panel{animation:in .22s ease-out}@keyframes in{from{transform:translateX(24px);opacity:.6}}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <h1>Normas ambientales del Perú</h1>
+  <div class="sub">Lo ambiental publicado en El Peruano por ministerios, organismos, gobiernos regionales y municipalidades.</div>
+  <div class="upd" id="upd">Cargando…</div>
+</header>
+<div class="wrap">
+  <div class="stats">
+    <button class="stat" id="sNew" type="button"><strong id="nNew">–</strong><span>nuevas en 7 días</span></button>
+    <button class="stat c" id="sOpen" type="button"><strong id="nOpen">–</strong><span>consultas abiertas</span></button>
+    <button class="stat a" id="sHigh" type="button"><strong id="nHigh">–</strong><span>prioridad alta en el mes</span></button>
+  </div>
+  <section class="open" id="openBox" hidden>
+    <h2>Consultas públicas abiertas</h2>
+    <ul id="openList"></ul>
+  </section>
+</div>
+<div class="bar">
+  <div class="wrap">
+    <input class="search" id="q" type="search" placeholder="Buscar: humedales, IGAFOM, vertimiento, ANA…" aria-label="Buscar normas">
+    <div class="chips" id="chips" role="group" aria-label="Grupo de entidades"></div>
+    <div class="row2">
+      <select id="fEstado" aria-label="Estado"><option value="">Vigentes y proyectos</option><option value="vigente">Solo vigentes</option><option value="consulta">Solo proyectos en consulta</option></select>
+      <select id="fPrio" aria-label="Prioridad"><option value="">Toda prioridad</option><option value="alta">Prioridad alta</option><option value="media">Alta y media</option></select>
+      <select id="fLeida" aria-label="Lectura"><option value="">Leídas y no leídas</option><option value="no">Solo no leídas</option></select>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+</div>
+<main class="wrap" id="list"><div class="empty">Cargando normas…</div></main>
+<footer class="wrap">
+  Fuente: Diario Oficial El Peruano (Normas Legales y edición extraordinaria). Se actualiza cada mañana con GitHub Actions. Los resúmenes marcados como automáticos repiten la sumilla oficial; el resumen orienta, pero siempre manda el texto oficial. Los plazos de consulta son aproximados: confírmalos en la norma.
+</footer>
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="shade" id="shade"></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="dTitle" id="panel"></div>
+</div>
+<script>
+{
+const GRUPOS=["Todas","MINAM · OEFA · SENACE","ANA · MIDAGRI · SERNANP · SERFOR","MINEM · PRODUCE · MTC · VIVIENDA","Regionales y municipales","Otras entidades"];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+const safe=u=>/^https:\/\//.test(u||"")?u:"";
+const $=id=>document.getElementById(id);
+let normas=[],grupo="Todas",leidas=new Set();
+try{leidas=new Set(JSON.parse(localStorage.getItem("leidas")||"[]"))}catch(e){}
+const saveLeidas=()=>{try{localStorage.setItem("leidas",JSON.stringify([...leidas]))}catch(e){}};
+const hoy=()=>{const d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate())};
+const parse=s=>{const[y,m,d]=(s||"").split("-").map(Number);return y?new Date(y,m-1,d):null};
+const fmt=s=>{const d=parse(s);return d?d.toLocaleDateString("es-PE",{weekday:"long",day:"numeric",month:"long",year:"numeric"}):""};
+const fmtC=s=>{const d=parse(s);return d?d.toLocaleDateString("es-PE",{day:"numeric",month:"short"}):""};
+const diasA=s=>{const d=parse(s);return d?Math.round((d-hoy())/864e5):null};
+const abierta=n=>n.estado==="consulta"&&n.plazo&&diasA(n.plazo)>=0;
+const txtDias=n=>{const k=diasA(n.plazo);return k===0?"vence hoy":k===1?"queda 1 día":"quedan "+k+" días"};
+
+$("chips").innerHTML=GRUPOS.map(g=>`<button class="chip" type="button" aria-pressed="${g==="Todas"}" data-g="${esc(g)}">${esc(g)}</button>`).join("");
+$("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;grupo=b.dataset.g;for(const c of $("chips").children)c.setAttribute("aria-pressed",c===b);render()});
+for(const id of ["q","fEstado","fPrio","fLeida"])$(id).addEventListener("input",render);
+$("sOpen").addEventListener("click",()=>{$("fEstado").value="consulta";render();$("list").scrollIntoView({behavior:"smooth"})});
+$("sHigh").addEventListener("click",()=>{$("fPrio").value="alta";render();$("list").scrollIntoView({behavior:"smooth"})});
+$("sNew").addEventListener("click",()=>{$("fEstado").value="";$("fPrio").value="";$("q").value="";render();$("list").scrollIntoView({behavior:"smooth"})});
+
+function filtradas(){
+  const q=$("q").value.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  const est=$("fEstado").value,pr=$("fPrio").value,le=$("fLeida").value;
+  return normas.filter(n=>{
+    if(grupo!=="Todas"&&n.grupo!==grupo)return false;
+    if(est&&n.estado!==est)return false;
+    if(pr==="alta"&&n.prioridad!=="alta")return false;
+    if(pr==="media"&&n.prioridad==="baja")return false;
+    if(le==="no"&&leidas.has(n.id))return false;
+    if(q){const h=[n.titulo,n.resumen,n.entidad,n.numero,n.tema].join(" ").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");if(!q.split(/\s+/).every(w=>h.includes(w)))return false}
+    return true});
+}
+function card(n){
+  return `<button type="button" class="card${leidas.has(n.id)?" read":""}" data-id="${esc(n.id)}">
+  <div class="meta"><span class="ent">${esc(n.entidad)}</span>
+  <span class="tag t-${esc(n.estado)}">${n.estado==="consulta"?"Proyecto en consulta":"Vigente"}</span>
+  <span class="tag t-${esc(n.prioridad)}">Prioridad ${esc(n.prioridad)}</span>
+  ${abierta(n)?`<span class="tag t-consulta">${esc(txtDias(n))}</span>`:""}</div>
+  <h3>${esc(n.titulo)}</h3><div class="num">${esc(n.numero)} · ${esc(n.tema)}</div></button>`;
+}
+function render(){
+  const L=filtradas();
+  $("count").textContent=L.length+(L.length===1?" norma":" normas");
+  if(!normas.length){$("list").innerHTML=`<div class="empty">Aún no hay normas guardadas. La primera revisión diaria las cargará.</div>`;return}
+  if(!L.length){$("list").innerHTML=`<div class="empty">Ninguna norma coincide con estos filtros.</div>`;return}
+  let out="",last="";
+  for(const n of L){if(n.fecha!==last){out+=`<h2 class="day">${esc(fmt(n.fecha))}</h2>`;last=n.fecha}out+=card(n)}
+  $("list").innerHTML=out;
+}
+function resumenArriba(){
+  const t=hoy(),semana=normas.filter(n=>{const d=parse(n.fecha);return d&&(t-d)/864e5<7});
+  const mes=normas.filter(n=>n.prioridad==="alta"&&(n.fecha||"").slice(0,7)===t.toISOString().slice(0,7));
+  const ab=normas.filter(abierta).sort((a,b)=>a.plazo.localeCompare(b.plazo));
+  $("nNew").textContent=semana.length;$("nOpen").textContent=ab.length;$("nHigh").textContent=mes.length;
+  $("openBox").hidden=!ab.length;
+  $("openList").innerHTML=ab.map(n=>`<li><button type="button" data-id="${esc(n.id)}"><span class="days">${esc(txtDias(n))}</span><span>${esc(n.entidad)} · ${esc(n.titulo)}</span></button></li>`).join("");
+}
+function abrir(id){
+  const n=normas.find(x=>x.id===id);if(!n)return;
+  leidas.add(n.id);saveLeidas();
+  const url=safe(n.url),pdf=safe(n.pdf);
+  $("panel").innerHTML=`<button class="close" id="cls" type="button" aria-label="Cerrar">×</button>
+  <div class="meta"><span class="ent">${esc(n.entidad)}</span><span class="tag t-${esc(n.estado)}">${n.estado==="consulta"?"Proyecto en consulta":"Vigente"}</span><span class="tag t-${esc(n.prioridad)}">Prioridad ${esc(n.prioridad)}</span></div>
+  <h2 id="dTitle">${esc(n.titulo)}</h2>
+  <div class="num">${esc(n.numero)}</div>
+  ${n.estado==="consulta"&&n.plazo?`<div class="plazo">${abierta(n)?"Comentarios hasta aprox. el "+esc(fmt(n.plazo))+" ("+esc(txtDias(n))+")":"Plazo de comentarios vencido (aprox. "+esc(fmtC(n.plazo))+")"}</div>`:""}
+  <div class="resumen">${esc(n.resumen)}</div>
+  <dl><dt>Publicada</dt><dd>${esc(fmt(n.fecha))}</dd><dt>Tema</dt><dd>${esc(n.tema)}</dd><dt>Grupo</dt><dd>${esc(n.grupo)}</dd>${n.dependencia?`<dt>Sector</dt><dd>${esc(n.dependencia)}</dd>`:""}<dt>Fuente</dt><dd>${esc(n.fuente||"El Peruano")}</dd></dl>
+  <div class="btns">${pdf?`<a class="btn pri" href="${esc(pdf)}" target="_blank" rel="noopener">Abrir PDF oficial</a>`:""}${url?`<a class="btn" href="${esc(url)}" target="_blank" rel="noopener">Ver en El Peruano</a>`:""}<button class="btn" id="noLeida" type="button">Marcar como no leída</button></div>
+  <p class="note">El resumen es una guía rápida. Para aplicar la norma, revisa el texto oficial.</p>`;
+  $("sheet").classList.add("on");$("sheet").setAttribute("aria-hidden","false");$("cls").focus();
+  $("cls").addEventListener("click",cerrar);
+  $("noLeida").addEventListener("click",()=>{leidas.delete(n.id);saveLeidas();cerrar()});
+}
+function cerrar(){$("sheet").classList.remove("on");$("sheet").setAttribute("aria-hidden","true");render()}
+$("shade").addEventListener("click",cerrar);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("sheet").classList.contains("on"))cerrar()});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b)abrir(b.dataset.id)});
+
+(async()=>{
+  try{
+    const r=await fetch("normas.json?t="+Date.now());
+    const j=await r.json();
+    normas=(j.normas||[]).slice().sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||""));
+    $("upd").innerHTML=`Última revisión: <b>${esc(fmt(j.ultimaRevision))}</b>${j.nota?` · ${esc(j.nota)}`:""}`;
+    resumenArriba();render();
+  }catch(e){$("upd").textContent="No se pudo cargar normas.json";$("list").innerHTML=`<div class="empty">No se pudo cargar la lista de normas.</div>`}
+})();
+}
+</script>
+</body>
+</html>
