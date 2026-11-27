@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Normas Ambientales Perú</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1d6b48">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -212,6 +216,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b
     resumenArriba();render();
   }catch(e){$("upd").textContent="No se pudo cargar normas.json";$("list").innerHTML=`<div class="empty">No se pudo cargar la lista de normas.</div>`}
 })();
+if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
 }
 </script>
 </body>
