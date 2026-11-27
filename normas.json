@@ -1,8 +1,24 @@
 {
- "ultimaRevision": "2026-11-26",
- "revisadoHasta": "2026-11-26",
- "nota": "Sin normas ambientales nuevas hoy",
+ "ultimaRevision": "2026-11-27",
+ "revisadoHasta": "2026-11-27",
+ "nota": "2 normas nuevas hoy",
  "normas": [
+  {
+   "id": "NL-2578848-1",
+   "fecha": "2026-11-27",
+   "entidad": "Organismo Supervisor De La Inversión En Energía Y Minería",
+   "grupo": "Otras entidades",
+   "dependencia": "Organismo Supervisor De La Inversión En Energía Y Minería",
+   "numero": "RESOLUCIÓN N° 209-2026-OS/CD",
+   "titulo": "Resolución de Consejo Directivo que aprueba la Guía Disposiciones sobre el Informe de cumplimiento del objetivo de estabilidad física del Plan de Cierre de Minas de componentes principales",
+   "resumen": "Resolución de Consejo Directivo que aprueba la Guía Disposiciones sobre el Informe de cumplimiento del objetivo de estabilidad física del Plan de Cierre de Minas de componentes principales. (Resumen automático: revisa el texto oficial.)",
+   "tema": "Cierre y garantías",
+   "estado": "vigente",
+   "prioridad": "alta",
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2578848-1",
+   "pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2578848-1/pdf",
+   "fuente": "El Peruano"
+  },
   {
    "id": "NL-2578606-2",
    "fecha": "2026-11-26",
@@ -47,6 +63,22 @@
    "url": "https://busquedas.elperuano.pe/dispositivo/NL/2578606-5",
    "pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2578606-5/pdf",
    "fuente": "El Peruano"
+  },
+  {
+   "id": "EX-2578995-1",
+   "fecha": "2026-11-26",
+   "entidad": "SENACE",
+   "grupo": "MINAM · OEFA · SENACE",
+   "dependencia": "Servicio Nacional De Certificación Ambiental Para Las Inversiones Sostenibles",
+   "numero": "RESOLUCIÓN N° D000053-2026-SENACE-GG",
+   "titulo": "Aprueban el Manual de Perfiles de Puestos del Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles-Senace",
+   "resumen": "Aprueban el Manual de Perfiles de Puestos del Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles-Senace. (Resumen automático: revisa el texto oficial.)",
+   "tema": "Certificación ambiental",
+   "estado": "vigente",
+   "prioridad": "media",
+   "url": "https://busquedas.elperuano.pe/dispositivo/EX/2578995-1",
+   "pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2578995-1/pdf",
+   "fuente": "El Peruano (extraordinaria)"
   },
   {
    "id": "NL-2577841-1",
